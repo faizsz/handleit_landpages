@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, Instagram, Music } from 'lucide-react';
+import { Mail, Phone, Image, Play } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -17,10 +17,10 @@ const Footer = () => {
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a href="https://instagram.com/handleit.id" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', backgroundColor: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex' }}>
-                <Instagram size={20} />
+                <Image size={20} />
               </a>
               <a href="https://tiktok.com/@HandleIt13" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', backgroundColor: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex' }}>
-                <Music size={20} />
+                <Play size={20} />
               </a>
             </div>
           </div>
