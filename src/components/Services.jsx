@@ -1,123 +1,144 @@
 import React from 'react';
-import { Globe, Bot, FileText, CheckCircle } from 'lucide-react';
+import { Globe, Bot, FileText, Wrench, Server, MessageCircle } from 'lucide-react';
 
-const Services = () => {
-  const services = [
-    {
-      id: "web",
-      icon: <Globe size={40} color="#fff" />,
-      title: "Web Crafter",
-      subtitle: "Pembuatan Website",
-      desc: "Website mobile-first untuk event, katalog produk, atau portofolio. Integrasi WhatsApp & Google Maps siap pakai.",
-      gradient: "linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%)",
-      pricing: [
-        { name: "Starter", price: "Rp 79.000/bulan", detail: "Landing page + WA button" },
-        { name: "Pro", price: "Rp 199.000/bulan", detail: "Katalog + SEO + CMS" },
-        { name: "One-time", price: "Mulai Rp 599.000", detail: "Tanpa langganan" }
-      ],
-      ctaText: "Pilih Paket"
-    },
-    {
-      id: "bot",
-      icon: <Bot size={40} color="#fff" />,
-      title: "Automation Hub",
-      subtitle: "WhatsApp Bot & Automasi",
-      desc: "Bot untuk auto-reply FAQ, terima order otomatis, survei terintegrasi Google Sheets. Cocok untuk skripsi & operasional UMKM.",
-      gradient: "linear-gradient(135deg, #e94560 0%, #d13d56 100%)",
-      pricing: [
-        { name: "Basic", price: "Rp 49.000/bulan", detail: "Template bot + Sheets" },
-        { name: "Pro", price: "Rp 99.000/bulan", detail: "Custom logic + dashboard" }
-      ],
-      ctaText: "Tanya Bot",
-      featured: true
-    },
-    {
-      id: "template",
-      icon: <FileText size={40} color="#fff" />,
-      title: "Template Shop",
-      subtitle: "Template Digital Siap Pakai",
-      desc: "Template makalah, CV, undangan digital, sertifikat, invoice. Format Canva/Google Docs/Figma dengan panduan.",
-      gradient: "linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%)",
-      pricing: [
-        { name: "Basic", price: "Rp 15.000/template", detail: "Download instan" },
-        { name: "Premium", price: "Rp 35.000", detail: "Bundle + tutorial + update" }
-      ],
-      ctaText: "Belanja Template"
-    }
-  ];
+const SERVICES = [
+  {
+    id: 'landing',
+    icon: <Globe size={28} strokeWidth={1.8} />,
+    name: 'Landing Page',
+    desc: 'Website satu halaman untuk promosi, event, atau produk UMKM.',
+    startPrice: 'Rp 35.000',
+    unit: '/ bulan',
+    badge: 'Terlaris',
+    featured: true,
+  },
+  {
+    id: 'web-ops',
+    icon: <Server size={28} strokeWidth={1.8} />,
+    name: 'Web Operasional',
+    desc: 'Website multi-halaman untuk katalog, toko online, atau portofolio.',
+    startPrice: 'Rp 75.000',
+    unit: '/ bulan',
+  },
+  {
+    id: 'bot-wa',
+    icon: <Bot size={28} strokeWidth={1.8} />,
+    name: 'Bot WhatsApp',
+    desc: 'Auto-reply, terima order otomatis & survei terintegrasi Google Sheets.',
+    startPrice: 'Rp 49.000',
+    unit: '/ bulan',
+  },
+  {
+    id: 'template',
+    icon: <FileText size={28} strokeWidth={1.8} />,
+    name: 'Template Digital',
+    desc: 'CV, undangan, invoice, sertifikat — format Canva/Google Docs/Figma.',
+    startPrice: 'Rp 15.000',
+    unit: '/ template',
+  },
+  {
+    id: 'maintenance',
+    icon: <Wrench size={28} strokeWidth={1.8} />,
+    name: 'Maintenance',
+    desc: 'Update konten, perbaikan bug, dan optimasi website yang sudah jadi.',
+    startPrice: 'Rp 50.000',
+    unit: '/ bulan',
+  },
+];
 
-  return (
-    <section id="layanan" className="section" style={{ backgroundColor: '#f8f9fa' }}>
-      <div className="container">
-        <h2 className="section-title">3 Layanan Utama Kami</h2>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
-          {services.map((service) => (
-            <div key={service.id} style={{
-              background: '#fff',
-              borderRadius: '24px',
-              overflow: 'hidden',
-              boxShadow: service.featured ? '0 20px 40px rgba(233,69,96,0.15)' : '0 10px 30px rgba(0,0,0,0.05)',
-              transform: service.featured ? 'translateY(-10px)' : 'none',
-              border: service.featured ? '2px solid #e94560' : '1px solid #eaeaea',
-              transition: 'all 0.3s ease',
-              display: 'flex',
-              flexDirection: 'column'
-            }} className="service-card">
-              
-              <div style={{ 
-                padding: '40px 30px', 
-                background: service.gradient,
-                color: '#fff',
-                textAlign: 'center',
-                position: 'relative'
-              }}>
-                {service.featured && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '15px',
-                    right: '15px',
-                    background: '#fff',
-                    color: '#e94560',
-                    padding: '4px 12px',
-                    borderRadius: '20px',
-                    fontSize: '0.75rem',
-                    fontWeight: 'bold'
-                  }}>POPULAR</div>
-                )}
-                <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>{service.icon}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '800', marginBottom: '5px' }}>{service.title}</h3>
-                <p style={{ fontSize: '1rem', opacity: 0.9, margin: 0 }}>{service.subtitle}</p>
-              </div>
-
-              <div style={{ padding: '30px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <p style={{ color: '#6c757d', marginBottom: '25px', lineHeight: '1.6' }}>{service.desc}</p>
-                
-                <div style={{ marginBottom: '30px', flex: 1 }}>
-                  <h4 style={{ fontSize: '1rem', color: '#1a1a2e', marginBottom: '15px', fontWeight: '700' }}>Pricing:</h4>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    {service.pricing.map((price, idx) => (
-                      <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }}>
-                        <CheckCircle size={18} color="#e94560" style={{ marginTop: '3px', flexShrink: 0 }} />
-                        <div>
-                          <span style={{ fontWeight: '600', color: '#1a1a2e' }}>{price.name}:</span> <span style={{ color: '#6c757d' }}>{price.price}</span>
-                          <div style={{ fontSize: '0.85rem', color: '#a0a0b8' }}>{price.detail}</div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <a href="https://wa.me/6288987204298" target="_blank" rel="noopener noreferrer" className={`btn ${service.featured ? 'btn-primary' : 'btn-outline'}`} style={{ width: '100%', display: 'block', textAlign: 'center' }}>
-                  {service.ctaText}
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
+const Services = () => (
+  <section id="layanan" style={{ backgroundColor: '#f5f4f1', padding: '90px 0' }}>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">Layanan & Harga</span>
+        <h2 className="section-title">Transparan & Lengkap</h2>
+        <p className="section-sub">
+          Harga langsung terlihat — tidak perlu "hubungi kami dulu". Pilih yang sesuai kebutuhanmu.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: '20px',
+      }}>
+        {SERVICES.map(svc => (
+          <div key={svc.id} style={{
+            background: '#fff',
+            borderRadius: '20px',
+            padding: '30px',
+            border: svc.featured ? '2px solid #3d4255' : '1px solid #e2e0db',
+            boxShadow: svc.featured ? '0 12px 40px rgba(61,66,85,0.12)' : '0 4px 16px rgba(0,0,0,0.04)',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            position: 'relative',
+          }} className="card">
+            {svc.badge && (
+              <span style={{
+                position: 'absolute', top: '18px', right: '18px',
+                backgroundColor: '#7a3b2e',
+                color: '#fff',
+                fontSize: '0.72rem',
+                fontWeight: '700',
+                padding: '4px 10px',
+                borderRadius: '50px',
+                letterSpacing: '0.05em',
+              }}>{svc.badge}</span>
+            )}
+
+            <div style={{
+              width: '52px', height: '52px',
+              backgroundColor: svc.featured ? 'rgba(61,66,85,0.08)' : '#f5f4f1',
+              borderRadius: '12px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: svc.featured ? '#3d4255' : '#5a6175',
+            }}>
+              {svc.icon}
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#2c3045', marginBottom: '6px' }}>
+                {svc.name}
+              </h3>
+              <p style={{ fontSize: '0.9rem', color: '#5a6175', lineHeight: '1.55' }}>
+                {svc.desc}
+              </p>
+            </div>
+
+            <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid #f0ede8' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '14px' }}>
+                <span style={{ fontSize: '0.85rem', color: '#8a8fa8', fontWeight: '500' }}>Mulai</span>
+                <span style={{ fontSize: '1.4rem', fontWeight: '800', color: svc.featured ? '#3d4255' : '#7a3b2e' }}>
+                  {svc.startPrice}
+                </span>
+                <span style={{ fontSize: '0.82rem', color: '#8a8fa8' }}>{svc.unit}</span>
+              </div>
+              <a
+                href="https://wa.me/6288987204298"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  width: '100%',
+                  backgroundColor: svc.featured ? '#3d4255' : 'transparent',
+                  color: svc.featured ? '#fff' : '#3d4255',
+                  border: svc.featured ? 'none' : '2px solid #3d4255',
+                  padding: '11px',
+                  fontSize: '0.9rem',
+                  fontWeight: '700',
+                  gap: '6px',
+                }}
+              >
+                <MessageCircle size={15} /> Pesan
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Services;
