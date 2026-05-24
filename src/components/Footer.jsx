@@ -1,66 +1,153 @@
 import React from 'react';
-import { Mail, Phone, Image, Play } from 'lucide-react';
+import { Mail, Phone, MessageCircle, ExternalLink } from 'lucide-react';
 
-const Footer = () => {
-  return (
-    <footer style={{ backgroundColor: '#1a1a2e', color: '#fff', paddingTop: '80px', paddingBottom: '30px' }}>
-      <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', marginBottom: '60px' }}>
-          
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <img src="/logo.png" alt="Handle IT Logo" style={{ height: '30px', filter: 'brightness(0) invert(1)' }} />
-              <span style={{ fontSize: '1.25rem', fontWeight: '800' }}>Handle IT</span>
-            </div>
-            <p style={{ color: '#a0a0b8', marginBottom: '20px' }}>
-              "Kami yang tangani, kamu fokus ke tujuanmu"
-            </p>
-            <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="https://instagram.com/handleit.id" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', backgroundColor: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex' }}>
-                <Image size={20} />
-              </a>
-              <a href="https://tiktok.com/@HandleIt13" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', backgroundColor: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex' }}>
-                <Play size={20} />
-              </a>
-            </div>
-          </div>
+const Footer = () => (
+  <footer style={{ backgroundColor: '#1e2235', color: '#fff', paddingTop: '72px', paddingBottom: '32px' }}>
+    <div className="container">
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '40px',
+        marginBottom: '56px',
+      }}>
 
-          <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '20px', fontWeight: '600' }}>Quick Links</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <li><a href="#layanan" style={{ color: '#a0a0b8', transition: 'color 0.3s' }} className="footer-link">Layanan (Web, Bot, Template)</a></li>
-              <li><a href="#cara-order" style={{ color: '#a0a0b8', transition: 'color 0.3s' }} className="footer-link">Cara Order</a></li>
-              <li><a href="#faq" style={{ color: '#a0a0b8', transition: 'color 0.3s' }} className="footer-link">FAQ</a></li>
-              <li><a href="#kontak" style={{ color: '#a0a0b8', transition: 'color 0.3s' }} className="footer-link">Kontak</a></li>
-            </ul>
+        {/* Brand */}
+        <div style={{ gridColumn: 'span 1' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+            <img src="/logo.png" alt="Handle IT Logo" style={{ height: '32px', width: 'auto' }} />
+            <span style={{ fontSize: '1.2rem', fontWeight: '800', letterSpacing: '-0.01em' }}>Handle IT</span>
           </div>
-
-          <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '20px', fontWeight: '600' }}>Kontak</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#a0a0b8' }}>
-                <Mail size={18} /> handleeit@gmail.com
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#a0a0b8' }}>
-                <Phone size={18} /> 088987204298
-              </li>
-            </ul>
+          <p style={{ color: '#8a8fa8', fontSize: '0.88rem', lineHeight: '1.7', marginBottom: '20px', maxWidth: '220px' }}>
+            Jasa digital terjangkau untuk UMKM & pelajar. Kami yang tangani, kamu fokus ke tujuanmu.
+          </p>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <a
+              href="https://instagram.com/handleit.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                width: '38px', height: '38px',
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                borderRadius: '10px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#8a8fa8',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = '#8a8fa8'; }}
+            >
+              <ExternalLink size={18} />
+            </a>
+            <a
+              href="https://wa.me/6288987204298"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                width: '38px', height: '38px',
+                backgroundColor: 'rgba(37,211,102,0.15)',
+                borderRadius: '10px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#25D366',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(37,211,102,0.25)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgba(37,211,102,0.15)'; }}
+            >
+              <MessageCircle size={18} />
+            </a>
           </div>
-          
         </div>
 
-        <div style={{ borderTop: '1px solid #33334d', paddingTop: '30px', display: 'flex', flexDirection: 'column', md: {flexDirection: 'row'}, justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
-          <div style={{ color: '#a0a0b8', fontSize: '0.9rem' }}>
-            © 2026 Handle IT. All rights reserved.
-          </div>
-          <div style={{ display: 'flex', gap: '20px', color: '#a0a0b8', fontSize: '0.9rem' }}>
-            <a href="#" className="footer-link">Privacy Policy</a>
-            <a href="#" className="footer-link">Terms of Service</a>
-          </div>
+        {/* Quick Links */}
+        <div>
+          <h4 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '20px', color: '#e2e0db' }}>
+            Navigasi
+          </h4>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {[
+              { href: '#layanan', label: 'Layanan' },
+              { href: '#harga', label: 'Harga & Paket' },
+              { href: '#cara-kerja', label: 'Cara Kerja' },
+              { href: '#faq', label: 'FAQ' },
+              { href: '#kontak', label: 'Kontak' },
+            ].map(link => (
+              <li key={link.href}>
+                <a href={link.href} className="footer-link"
+                  style={{ color: '#8a8fa8', fontSize: '0.88rem', transition: 'color 0.3s' }}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Layanan */}
+        <div>
+          <h4 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '20px', color: '#e2e0db' }}>
+            Layanan
+          </h4>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {['Landing Page', 'Web Operasional', 'Bot WhatsApp', 'Template Digital', 'Maintenance'].map(s => (
+              <li key={s}>
+                <a href="#layanan" className="footer-link"
+                  style={{ color: '#8a8fa8', fontSize: '0.88rem', transition: 'color 0.3s' }}>
+                  {s}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h4 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '20px', color: '#e2e0db' }}>
+            Kontak
+          </h4>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#8a8fa8', fontSize: '0.88rem' }}>
+              <MessageCircle size={16} color="#25D366" />
+              <a href="https://wa.me/6288987204298" style={{ color: '#8a8fa8' }} className="footer-link">
+                088987204298
+              </a>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#8a8fa8', fontSize: '0.88rem' }}>
+              <Mail size={16} color="#7a3b2e" />
+              <a href="mailto:handleeit@gmail.com" style={{ color: '#8a8fa8' }} className="footer-link">
+                handleeit@gmail.com
+              </a>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#8a8fa8', fontSize: '0.88rem' }}>
+              <ExternalLink size={16} color="#8a8fa8" />
+              <a href="https://instagram.com/handleit.id" style={{ color: '#8a8fa8' }} className="footer-link">
+                @handleit.id
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      {/* Bottom bar */}
+      <div style={{
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        paddingTop: '28px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '12px',
+      }}>
+        <span style={{ color: '#5a6175', fontSize: '0.82rem' }}>
+          © 2026 Handle IT. All rights reserved.
+        </span>
+        <div style={{ display: 'flex', gap: '20px' }}>
+          <a href="#" style={{ color: '#5a6175', fontSize: '0.82rem' }} className="footer-link">Privacy Policy</a>
+          <a href="#" style={{ color: '#5a6175', fontSize: '0.82rem' }} className="footer-link">Terms of Service</a>
         </div>
       </div>
-    </footer>
-  );
-};
+    </div>
+  </footer>
+);
 
 export default Footer;

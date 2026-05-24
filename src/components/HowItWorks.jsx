@@ -1,86 +1,105 @@
 import React from 'react';
 import { MessageCircle, FileSignature, Clock, CheckSquare } from 'lucide-react';
 
-const HowItWorks = () => {
-  const steps = [
-    {
-      icon: <MessageCircle size={28} color="#fff" />,
-      title: "Konsultasi Gratis",
-      desc: "Ceritakan kebutuhanmu via WhatsApp. Kami bantu rekomendasikan solusi terbaik.",
-      color: "#0f3460"
-    },
-    {
-      icon: <FileSignature size={28} color="#fff" />,
-      title: "Brief & Kontrak",
-      desc: "Isi brief sederhana, tanda tangani kontrak digital, bayar DP 50%",
-      color: "#e94560"
-    },
-    {
-      icon: <Clock size={28} color="#fff" />,
-      title: "Pengerjaan 3-7 Hari",
-      desc: "Tim kami kerjakan. Kamu dapat update progress via WhatsApp",
-      color: "#f59e0b"
-    },
-    {
-      icon: <CheckSquare size={28} color="#fff" />,
-      title: "Serah Terima & Garansi",
-      desc: "Website/bot jadi, pelunasan, dan garansi 30 hari aktif",
-      color: "#10b981"
-    }
-  ];
+const STEPS = [
+  {
+    icon: <MessageCircle size={26} strokeWidth={1.8} color="#fff" />,
+    num: '01',
+    title: 'Hubungi via WhatsApp',
+    desc: 'Cerita kebutuhanmu via WA. Gratis, santai, tidak ada kewajiban. Kami bantu rekomendasikan layanan yang tepat.',
+    color: '#25D366',
+    bg: '#1da851',
+  },
+  {
+    icon: <FileSignature size={26} strokeWidth={1.8} color="#fff" />,
+    num: '02',
+    title: 'Pilih Layanan & Brief',
+    desc: 'Isi brief sederhana — ceritakan bisnis kamu. Lalu tanda tangani kontrak digital. Tidak rumit, kami bantu.',
+    color: '#3d4255',
+    bg: '#2c3045',
+  },
+  {
+    icon: <Clock size={26} strokeWidth={1.8} color="#fff" />,
+    num: '03',
+    title: 'Pengerjaan 3–7 Hari',
+    desc: 'Tim kami kerjakan dengan serius. Kamu dapat update progress via WhatsApp, tidak perlu tanya-tanya terus.',
+    color: '#7a3b2e',
+    bg: '#9c4d3e',
+  },
+  {
+    icon: <CheckSquare size={26} strokeWidth={1.8} color="#fff" />,
+    num: '04',
+    title: 'Lihat Dulu, Baru Bayar',
+    desc: 'Website/bot jadi & kamu lihat hasilnya. Baru bayar pelunasan. Garansi revisi 30 hari langsung aktif.',
+    color: '#1e8a4a',
+    bg: '#166b38',
+  },
+];
 
-  return (
-    <section className="section bg-light" style={{ backgroundColor: '#f8f9fa' }}>
-      <div className="container">
-        <h2 className="section-title">Cara Order - 4 Langkah Mudah</h2>
-        
-        <div style={{ position: 'relative', maxWidth: '900px', margin: '0 auto' }}>
-          {/* Connecting line for desktop */}
-          <div style={{
-            position: 'absolute',
-            top: '40px',
-            left: '50px',
-            right: '50px',
-            height: '4px',
-            backgroundColor: '#eaeaea',
-            zIndex: 1,
-            display: 'block'
-          }} className="step-line"></div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', position: 'relative', zIndex: 2 }}>
-            {steps.map((step, index) => (
-              <div key={index} style={{ textAlign: 'center' }}>
-                <div style={{
-                  width: '80px',
-                  height: '80px',
-                  backgroundColor: step.color,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px auto',
-                  boxShadow: `0 10px 20px ${step.color}40`,
-                  border: '4px solid #f8f9fa'
-                }}>
-                  {step.icon}
-                </div>
-                <div style={{
-                  backgroundColor: '#fff',
-                  padding: '20px',
-                  borderRadius: '16px',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.05)'
-                }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 'bold', color: step.color, marginBottom: '5px' }}>LANGKAH {index + 1}</div>
-                  <h3 style={{ fontSize: '1.25rem', marginBottom: '10px', color: '#1a1a2e' }}>{step.title}</h3>
-                  <p style={{ color: '#6c757d', fontSize: '0.95rem', margin: 0 }}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+const HowItWorks = () => (
+  <section id="cara-kerja" style={{ backgroundColor: '#fff', padding: '90px 0' }}>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">Alur Kerja</span>
+        <h2 className="section-title">4 Langkah — Simpel & Transparan</h2>
+        <p className="section-sub">
+          Dari konsultasi sampai serah terima, prosesnya jelas dan tidak bikin bingung.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+        gap: '24px',
+        position: 'relative',
+      }}>
+        {STEPS.map((step, i) => (
+          <div key={i} style={{ textAlign: 'center' }}>
+            {/* Step number + icon */}
+            <div style={{ position: 'relative', display: 'inline-block', marginBottom: '20px' }}>
+              <div style={{
+                width: '72px', height: '72px',
+                borderRadius: '50%',
+                background: `linear-gradient(135deg, ${step.color}, ${step.bg})`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                margin: '0 auto',
+                boxShadow: `0 12px 30px ${step.color}30`,
+              }}>
+                {step.icon}
+              </div>
+              <div style={{
+                position: 'absolute', top: '-6px', right: '-6px',
+                width: '24px', height: '24px',
+                backgroundColor: '#f5f4f1',
+                border: `2px solid ${step.color}`,
+                borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '0.65rem',
+                fontWeight: '800',
+                color: step.color,
+              }}>{i + 1}</div>
+            </div>
+
+            <div style={{
+              backgroundColor: '#f5f4f1',
+              borderRadius: '16px',
+              padding: '22px 20px',
+            }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: '800', color: step.color, letterSpacing: '0.1em', marginBottom: '8px' }}>
+                LANGKAH {step.num}
+              </div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#2c3045', marginBottom: '10px' }}>
+                {step.title}
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#5a6175', lineHeight: '1.6', margin: 0 }}>
+                {step.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default HowItWorks;

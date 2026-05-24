@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import PainPoints from './components/PainPoints';
+import Promises from './components/Promises';
 import Services from './components/Services';
-import Features from './components/Features';
+import Pricing from './components/Pricing';
+import WhyAffordable from './components/WhyAffordable';
 import HowItWorks from './components/HowItWorks';
 import Portfolio from './components/Portfolio';
 import Testimonials from './components/Testimonials';
-import PricingHighlight from './components/PricingHighlight';
 import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
@@ -18,13 +18,13 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <PainPoints />
+        <Promises />
         <Services />
-        <Features />
-        <div id="cara-order"><HowItWorks /></div>
+        <Pricing />
+        <WhyAffordable />
+        <div id="cara-kerja"><HowItWorks /></div>
         <Portfolio />
         <Testimonials />
-        <PricingHighlight />
         <FAQ />
         <div id="kontak"><FinalCTA /></div>
       </main>

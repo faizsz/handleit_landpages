@@ -1,187 +1,352 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, MessageCircle, Star } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Globe, MessageCircle, Settings, FileText, ArrowRight } from 'lucide-react';
 
-const ROTATING_WORDS = ['Terjangkau', 'Transparan', 'Terpercaya'];
+/* ─── Rotating text words ─── */
+const ROTATING_WORDS = [
+  'Website Profesional',
+  'Bot WhatsApp Otomatis',
+  'Sistem Digital UMKM',
+  'Landing Page Produk',
+];
+
+/* ─── Service cards config ─── */
+const SERVICE_CARDS = [
+  {
+    icon: <Globe size={18} strokeWidth={2} color="#7a3b2e" />,
+    title: 'Website & Landing Page',
+    sub: 'Mulai Rp35.000',
+    style: {
+      top: '0px', left: '-10px',
+      transform: 'rotate(-5deg)',
+    },
+  },
+  {
+    icon: <MessageCircle size={18} strokeWidth={2} color="#7a3b2e" />,
+    title: 'Bot WhatsApp',
+    sub: 'Auto-reply 24 jam',
+    style: {
+      top: '20px', right: '-10px',
+      transform: 'rotate(4deg)',
+    },
+  },
+  {
+    icon: <Settings size={18} strokeWidth={2} color="#7a3b2e" />,
+    title: 'Sistem Otomasi',
+    sub: 'Hemat waktu & tenaga',
+    style: {
+      bottom: '60px', left: '0px',
+      transform: 'rotate(3deg)',
+    },
+  },
+  {
+    icon: <FileText size={18} strokeWidth={2} color="#7a3b2e" />,
+    title: 'Template Digital',
+    sub: 'Siap pakai, langsung jadi',
+    style: {
+      bottom: '30px', right: '0px',
+      transform: 'rotate(-3deg)',
+    },
+  },
+];
 
 const Hero = () => {
   const [wordIdx, setWordIdx] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setVisible(false);
       setTimeout(() => {
         setWordIdx(i => (i + 1) % ROTATING_WORDS.length);
         setVisible(true);
-      }, 350);
-    }, 2200);
-    return () => clearInterval(interval);
+      }, 380);
+    }, 2400);
+    return () => clearInterval(timer);
   }, []);
 
   return (
     <section style={{
+      backgroundColor: '#faf9f7',
+      paddingTop: '120px',
+      paddingBottom: '80px',
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
-      background: 'linear-gradient(145deg, #2c3045 0%, #3d4255 45%, #4a5068 100%)',
-      position: 'relative',
-      overflow: 'hidden',
-      paddingTop: '88px',
     }}>
-      {/* Subtle background decorations */}
       <div style={{
-        position: 'absolute', top: '-120px', right: '-80px',
-        width: '550px', height: '550px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(122,59,46,0.18) 0%, transparent 70%)',
-        pointerEvents: 'none'
-      }} />
-      <div style={{
-        position: 'absolute', bottom: '-80px', left: '-60px',
-        width: '350px', height: '350px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(37,211,102,0.08) 0%, transparent 70%)',
-        pointerEvents: 'none'
-      }} />
-      {/* Grid dots pattern */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
-        backgroundSize: '32px 32px',
-        pointerEvents: 'none'
-      }} />
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: '0 32px',
+        width: '100%',
+        display: 'grid',
+        gridTemplateColumns: '55fr 45fr',
+        gap: '64px',
+        alignItems: 'center',
+      }} className="hero-grid-main">
 
-      <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', paddingTop: '40px', paddingBottom: '60px' }}>
+        {/* ══════════════════════
+            LEFT COLUMN
+        ══════════════════════ */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0', alignItems: 'flex-start' }}>
 
-        {/* Label */}
-        <div style={{ marginBottom: '24px', animation: 'fadeInUp 0.5s ease 0.1s both' }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            backgroundColor: 'rgba(122,59,46,0.2)',
-            border: '1px solid rgba(122,59,46,0.35)',
-            color: '#e8967f',
-            padding: '7px 18px',
-            borderRadius: '50px',
-            fontSize: '0.85rem',
-            fontWeight: '700',
-            letterSpacing: '0.05em',
-          }}>
-            ✦ Jasa Digital untuk UMKM & Pelajar Indonesia
-          </span>
-        </div>
-
-        {/* Main Headline */}
-        <h1 style={{
-          fontSize: 'clamp(2.8rem, 6vw, 5rem)',
-          fontWeight: '800',
-          color: '#fff',
-          lineHeight: '1.1',
-          letterSpacing: '-0.03em',
-          marginBottom: '24px',
-          animation: 'fadeInUp 0.6s ease 0.2s both',
-        }}>
-          Bisnis Kamu Layak<br />
-          <span style={{ color: '#e8967f' }}>Punya Website</span>
-        </h1>
-
-        {/* Animated sub-headline */}
-        <div style={{
-          fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
-          fontWeight: '600',
-          color: 'rgba(255,255,255,0.75)',
-          marginBottom: '32px',
-          height: '2.2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px',
-          animation: 'fadeInUp 0.6s ease 0.3s both',
-        }}>
-          <span>Layanan yang</span>
-          <span style={{
+          {/* 1. Pill badge */}
+          <div style={{
+            backgroundColor: '#f2f0ec',
+            border: '1px solid #e8e0d8',
+            borderRadius: '99px',
+            padding: '6px 14px',
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: '500',
+            fontSize: '13px',
+            color: '#7a3b2e',
+            marginBottom: '28px',
             display: 'inline-block',
-            color: '#25D366',
-            fontWeight: '800',
-            transition: 'opacity 0.35s ease, transform 0.35s ease',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(-10px)',
-            minWidth: '160px',
-            textAlign: 'left',
           }}>
-            {ROTATING_WORDS[wordIdx]}
-          </span>
-        </div>
-
-        {/* Price Badge */}
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '12px',
-          backgroundColor: 'rgba(255,255,255,0.1)',
-          backdropFilter: 'blur(8px)',
-          border: '1px solid rgba(255,255,255,0.2)',
-          borderRadius: '50px',
-          padding: '10px 24px',
-          marginBottom: '40px',
-          animation: 'fadeInUp 0.6s ease 0.4s both',
-        }}>
-          <span style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.7)', fontWeight: '500' }}>Mulai dari</span>
-          <span style={{
-            fontSize: '1.6rem',
-            fontWeight: '800',
-            color: '#25D366',
-          }}>Rp 35.000</span>
-          <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>— tanpa biaya tersembunyi</span>
-        </div>
-
-        {/* CTA Buttons */}
-        <div style={{
-          display: 'flex',
-          gap: '16px',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          marginBottom: '40px',
-          animation: 'fadeInUp 0.6s ease 0.5s both',
-        }}>
-          <a href="#layanan" className="btn" style={{
-            backgroundColor: '#fff',
-            color: '#3d4255',
-            fontWeight: '800',
-            padding: '15px 32px',
-            fontSize: '1rem',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
-          }}>
-            Lihat Paket <ArrowRight size={18} />
-          </a>
-          <a
-            href="https://wa.me/6288987204298"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-wa"
-            style={{ padding: '15px 32px', fontSize: '1rem' }}
-          >
-            <MessageCircle size={18} /> Tanya Dulu di WA
-          </a>
-        </div>
-
-        {/* Social Proof */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          color: 'rgba(255,255,255,0.65)',
-          fontSize: '0.9rem',
-          fontWeight: '500',
-          animation: 'fadeInUp 0.6s ease 0.6s both',
-        }}>
-          <div style={{ display: 'flex', gap: '2px' }}>
-            {[1,2,3,4,5].map(i => (
-              <Star key={i} size={14} fill="#f59e0b" color="#f59e0b" />
-            ))}
+            ✦ Digitalisasi UMKM &amp; Bisnis Indonesia
           </div>
-          <span>Dipercaya UMKM & pelajar di seluruh Indonesia</span>
+
+          {/* 2. Headline */}
+          <h1 style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: '800',
+            fontSize: 'clamp(42px, 5vw, 64px)',
+            color: '#3d4255',
+            lineHeight: '1.1',
+            letterSpacing: '-0.03em',
+            marginBottom: '20px',
+          }}>
+            Digitalisasi Bisnismu,<br />
+            Mulai dari Rp35.000
+          </h1>
+
+          {/* 3. Subtext */}
+          <p style={{
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: '400',
+            fontSize: '18px',
+            color: '#6b7280',
+            lineHeight: '1.7',
+            maxWidth: '480px',
+            marginBottom: '28px',
+          }}>
+            Kami bantu bisnis kamu hadir secara digital — website, bot WhatsApp,
+            sistem otomasi, dan lebih banyak lagi. Terjangkau, transparan, tanpa ribet.
+          </p>
+
+          {/* 4. Animated rotating text */}
+          <div style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '20px',
+            color: '#6b7280',
+            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            flexWrap: 'wrap',
+            minHeight: '32px',
+          }}>
+            <span style={{ fontWeight: '400' }}>Kami buatkan</span>
+            <span style={{
+              fontWeight: '600',
+              color: '#7a3b2e',
+              textDecoration: 'underline',
+              textDecorationStyle: 'wavy',
+              textDecorationColor: 'rgba(122,59,46,0.35)',
+              textUnderlineOffset: '4px',
+              display: 'inline-block',
+              transition: 'opacity 0.38s ease, transform 0.38s ease',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateY(0px)' : 'translateY(-8px)',
+            }}>
+              {ROTATING_WORDS[wordIdx]}
+            </span>
+          </div>
+
+          {/* 5. Price pill */}
+          <div style={{
+            display: 'inline-block',
+            backgroundColor: '#3d4255',
+            color: '#ffffff',
+            borderRadius: '99px',
+            padding: '12px 24px',
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: '500',
+            fontSize: '15px',
+            marginBottom: '28px',
+            letterSpacing: '-0.01em',
+          }}>
+            Mulai Rp 35.000 — tanpa biaya tersembunyi
+          </div>
+
+          {/* 6. CTA Buttons */}
+          <div style={{
+            display: 'flex',
+            gap: '12px',
+            flexWrap: 'wrap',
+            marginBottom: '16px',
+          }}>
+            <a
+              href="#layanan"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                backgroundColor: '#3d4255',
+                color: '#ffffff',
+                borderRadius: '12px',
+                padding: '14px 28px',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '600',
+                fontSize: '15px',
+                textDecoration: 'none',
+                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 2px 14px rgba(61,66,85,0.2)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2c3045'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(61,66,85,0.28)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#3d4255'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 14px rgba(61,66,85,0.2)'; }}
+            >
+              Lihat Semua Layanan <ArrowRight size={16} />
+            </a>
+
+            <a
+              href="https://wa.me/6288987204298"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                backgroundColor: '#25d366',
+                color: '#ffffff',
+                borderRadius: '12px',
+                padding: '14px 28px',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '600',
+                fontSize: '15px',
+                textDecoration: 'none',
+                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 2px 14px rgba(37,211,102,0.3)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(37,211,102,0.38)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#25d366'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 14px rgba(37,211,102,0.3)'; }}
+            >
+              <MessageCircle size={16} /> Konsultasi Gratis di WA
+            </a>
+          </div>
+
+          {/* 7. Social proof */}
+          <div style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '13px',
+            color: '#9ca3af',
+            marginTop: '4px',
+          }}>
+            ⭐⭐⭐⭐⭐&nbsp; Dipercaya UMKM &amp; pelajar di seluruh Indonesia
+          </div>
+        </div>
+
+        {/* ══════════════════════
+            RIGHT COLUMN — floating cards
+        ══════════════════════ */}
+        <div style={{
+          position: 'relative',
+          height: '420px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          {/* Decorative organic blob */}
+          <div style={{
+            position: 'absolute',
+            width: '400px',
+            height: '360px',
+            borderRadius: '40% 60% 55% 45% / 45% 55% 60% 40%',
+            backgroundColor: '#ede9e3',
+            opacity: 0.75,
+            zIndex: 0,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }} />
+
+          {/* Floating service cards */}
+          {SERVICE_CARDS.map((card, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              width: '200px',
+              backgroundColor: '#ffffff',
+              border: '1px solid #e5e2db',
+              borderRadius: '16px',
+              padding: '16px 20px',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+              zIndex: 1,
+              cursor: 'default',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              ...card.style,
+            }}
+              onMouseEnter={e => {
+                e.currentTarget.style.boxShadow = '0 10px 32px rgba(0,0,0,0.11)';
+                e.currentTarget.style.transform = card.style.transform + ' translateY(-4px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
+                e.currentTarget.style.transform = card.style.transform;
+              }}
+            >
+              {/* Icon circle */}
+              <div style={{
+                width: '36px', height: '36px',
+                backgroundColor: '#f2f0ec',
+                borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '10px',
+              }}>
+                {card.icon}
+              </div>
+
+              {/* Card title */}
+              <div style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '600',
+                fontSize: '14px',
+                color: '#3d4255',
+                marginBottom: '4px',
+                lineHeight: '1.4',
+              }}>
+                {card.title}
+              </div>
+
+              {/* Card subtitle */}
+              <div style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '500',
+                fontSize: '13px',
+                color: '#7a3b2e',
+              }}>
+                {card.sub}
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
+
+      {/* Responsive styles */}
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-grid-main {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
+          .hero-grid-main > div:last-child {
+            height: 340px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .hero-grid-main {
+            padding: 0 20px !important;
+          }
+          .hero-grid-main h1 {
+            font-size: 36px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
