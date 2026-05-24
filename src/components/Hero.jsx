@@ -9,43 +9,112 @@ const ROTATING_WORDS = [
   'Landing Page Produk',
 ];
 
-/* ─── Service cards config ─── */
+/* ─── Organic blob SVG path ─── */
+const BlobMain = () => (
+  <svg
+    viewBox="0 0 420 380"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      position: 'absolute',
+      width: '420px',
+      height: '380px',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-48%, -50%)',
+      zIndex: 0,
+      overflow: 'visible',
+    }}
+  >
+    <path
+      d="M210,30 C270,10 360,50 390,120 C420,195 400,290 330,340 C260,390 140,385 80,330 C20,275 10,175 40,100 C70,25 150,50 210,30Z"
+      fill="#ede9e3"
+      opacity="0.8"
+    />
+  </svg>
+);
+
+const BlobAccent = () => (
+  <svg
+    viewBox="0 0 180 160"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{
+      position: 'absolute',
+      width: '180px',
+      height: '160px',
+      bottom: '-20px',
+      right: '-30px',
+      zIndex: 0,
+      transform: 'rotate(45deg)',
+      overflow: 'visible',
+    }}
+  >
+    <path
+      d="M90,15 C125,5 165,30 170,75 C175,120 145,155 100,158 C55,161 15,135 10,90 C5,45 55,25 90,15Z"
+      fill="#f5efe8"
+      opacity="0.6"
+    />
+  </svg>
+);
+
+/* ─── Dot pattern SVG ─── */
+const DotPattern = () => (
+  <svg
+    style={{
+      position: 'absolute',
+      top: 0, right: 0,
+      width: '35%',
+      height: '100%',
+      zIndex: 0,
+      pointerEvents: 'none',
+      overflow: 'hidden',
+    }}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="1.5" cy="1.5" r="1.5" fill="#e8e3dc" opacity="0.5" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#dots)" />
+  </svg>
+);
+
+/* ─── Service cards config — scattered cluster ─── */
 const SERVICE_CARDS = [
   {
     icon: <Globe size={18} strokeWidth={2} color="#7a3b2e" />,
     title: 'Website & Landing Page',
     sub: 'Mulai Rp35.000',
-    style: {
-      top: '0px', left: '-10px',
-      transform: 'rotate(-5deg)',
-    },
+    pos: { top: '20px', left: '10px' },
+    rotate: '-6deg',
+    zIndex: 4,
   },
   {
     icon: <MessageCircle size={18} strokeWidth={2} color="#7a3b2e" />,
     title: 'Bot WhatsApp',
     sub: 'Auto-reply 24 jam',
-    style: {
-      top: '20px', right: '-10px',
-      transform: 'rotate(4deg)',
-    },
+    pos: { top: '50px', right: '10px' },
+    rotate: '5deg',
+    zIndex: 3,
+    translate: 'translate(20px, 30px)',
   },
   {
     icon: <Settings size={18} strokeWidth={2} color="#7a3b2e" />,
     title: 'Sistem Otomasi',
     sub: 'Hemat waktu & tenaga',
-    style: {
-      bottom: '60px', left: '0px',
-      transform: 'rotate(3deg)',
-    },
+    pos: { bottom: '80px', left: '20px' },
+    rotate: '3deg',
+    zIndex: 2,
+    translate: 'translate(10px, -20px)',
   },
   {
     icon: <FileText size={18} strokeWidth={2} color="#7a3b2e" />,
     title: 'Template Digital',
     sub: 'Siap pakai, langsung jadi',
-    style: {
-      bottom: '30px', right: '0px',
-      transform: 'rotate(-3deg)',
-    },
+    pos: { bottom: '50px', right: '20px' },
+    rotate: '-4deg',
+    zIndex: 1,
+    translate: 'translate(30px, 10px)',
   },
 ];
 
@@ -72,7 +141,12 @@ const Hero = () => {
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      {/* Dot pattern — far right background */}
+      <DotPattern />
+
       <div style={{
         maxWidth: '1280px',
         margin: '0 auto',
@@ -82,12 +156,14 @@ const Hero = () => {
         gridTemplateColumns: '55fr 45fr',
         gap: '64px',
         alignItems: 'center',
+        position: 'relative',
+        zIndex: 1,
       }} className="hero-grid-main">
 
         {/* ══════════════════════
             LEFT COLUMN
         ══════════════════════ */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0', alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
           {/* 1. Pill badge */}
           <div style={{
@@ -162,50 +238,64 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* 5. Price pill */}
+          {/* 5. Price pill — small inline badge */}
           <div style={{
-            display: 'inline-block',
-            backgroundColor: '#3d4255',
-            color: '#ffffff',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            backgroundColor: '#f2f0ec',
+            border: '1px solid #e0d9d0',
             borderRadius: '99px',
-            padding: '12px 24px',
+            padding: '6px 16px',
             fontFamily: "'Inter', sans-serif",
             fontWeight: '500',
-            fontSize: '15px',
+            fontSize: '14px',
+            color: '#3d4255',
             marginBottom: '28px',
-            letterSpacing: '-0.01em',
           }}>
-            Mulai Rp 35.000 — tanpa biaya tersembunyi
+            {/* Terracotta dot indicator */}
+            <span style={{
+              display: 'inline-block',
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              backgroundColor: '#7a3b2e',
+              flexShrink: 0,
+            }} />
+            Mulai Rp 35.000 · tanpa biaya tersembunyi
           </div>
 
-          {/* 6. CTA Buttons */}
+          {/* 6. CTA Buttons — clear hierarchy */}
           <div style={{
             display: 'flex',
             gap: '12px',
             flexWrap: 'wrap',
             marginBottom: '16px',
           }}>
+            {/* Button 1 — Outline (secondary) */}
             <a
               href="#layanan"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
-                backgroundColor: '#3d4255',
-                color: '#ffffff',
+                backgroundColor: 'transparent',
+                border: '1.5px solid #3d4255',
+                color: '#3d4255',
                 borderRadius: '12px',
                 padding: '14px 28px',
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: '600',
                 fontSize: '15px',
                 textDecoration: 'none',
-                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-                boxShadow: '0 2px 14px rgba(61,66,85,0.2)',
+                transition: 'background 0.2s, color 0.2s, transform 0.2s',
+                cursor: 'pointer',
               }}
-              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2c3045'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(61,66,85,0.28)'; }}
-              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#3d4255'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 14px rgba(61,66,85,0.2)'; }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#3d4255'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#3d4255'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              Lihat Semua Layanan <ArrowRight size={16} />
+              Lihat Semua Layanan <ArrowRight size={15} />
             </a>
 
+            {/* Button 2 — Filled WA green (primary action) */}
             <a
               href="https://wa.me/6288987204298"
               target="_blank"
@@ -214,6 +304,7 @@ const Hero = () => {
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 backgroundColor: '#25d366',
                 color: '#ffffff',
+                border: '1.5px solid #25d366',
                 borderRadius: '12px',
                 padding: '14px 28px',
                 fontFamily: "'Inter', sans-serif",
@@ -221,10 +312,11 @@ const Hero = () => {
                 fontSize: '15px',
                 textDecoration: 'none',
                 transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-                boxShadow: '0 2px 14px rgba(37,211,102,0.3)',
+                boxShadow: '0 4px 16px rgba(37,211,102,0.32)',
+                cursor: 'pointer',
               }}
-              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(37,211,102,0.38)'; }}
-              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#25d366'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 14px rgba(37,211,102,0.3)'; }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#1da851'; e.currentTarget.style.borderColor = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(37,211,102,0.42)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#25d366'; e.currentTarget.style.borderColor = '#25d366'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(37,211,102,0.32)'; }}
             >
               <MessageCircle size={16} /> Konsultasi Gratis di WA
             </a>
@@ -242,30 +334,22 @@ const Hero = () => {
         </div>
 
         {/* ══════════════════════
-            RIGHT COLUMN — floating cards
+            RIGHT COLUMN — scattered card cluster
         ══════════════════════ */}
         <div style={{
           position: 'relative',
-          height: '420px',
+          height: '440px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          {/* Decorative organic blob */}
-          <div style={{
-            position: 'absolute',
-            width: '400px',
-            height: '360px',
-            borderRadius: '40% 60% 55% 45% / 45% 55% 60% 40%',
-            backgroundColor: '#ede9e3',
-            opacity: 0.75,
-            zIndex: 0,
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }} />
+          {/* Organic blob — main, behind all cards */}
+          <BlobMain />
 
-          {/* Floating service cards */}
+          {/* Accent blob — bottom right, partially outside */}
+          <BlobAccent />
+
+          {/* Floating service cards — scattered cluster */}
           {SERVICE_CARDS.map((card, i) => (
             <div key={i} style={{
               position: 'absolute',
@@ -275,18 +359,21 @@ const Hero = () => {
               borderRadius: '16px',
               padding: '16px 20px',
               boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-              zIndex: 1,
+              zIndex: card.zIndex,
               cursor: 'default',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              ...card.style,
+              transition: 'transform 0.35s ease, box-shadow 0.35s ease',
+              transform: `rotate(${card.rotate})${card.translate ? ' ' + card.translate : ''}`,
+              ...card.pos,
             }}
               onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = '0 10px 32px rgba(0,0,0,0.11)';
-                e.currentTarget.style.transform = card.style.transform + ' translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 12px 36px rgba(0,0,0,0.12)';
+                e.currentTarget.style.transform = `rotate(${card.rotate}) translateY(-6px)`;
+                e.currentTarget.style.zIndex = 10;
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
-                e.currentTarget.style.transform = card.style.transform;
+                e.currentTarget.style.transform = `rotate(${card.rotate})${card.translate ? ' ' + card.translate : ''}`;
+                e.currentTarget.style.zIndex = card.zIndex;
               }}
             >
               {/* Icon circle */}
@@ -327,7 +414,7 @@ const Hero = () => {
 
       </div>
 
-      {/* Responsive styles */}
+      {/* Responsive */}
       <style>{`
         @media (max-width: 900px) {
           .hero-grid-main {
@@ -335,7 +422,7 @@ const Hero = () => {
             gap: 48px !important;
           }
           .hero-grid-main > div:last-child {
-            height: 340px !important;
+            height: 360px !important;
           }
         }
         @media (max-width: 600px) {
