@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 
 /* ── Detail pages ── */
 import WebsitePage from './pages/WebsitePage';
+import AutomationPage from './pages/AutomationPage';
 
 /* ── Full landing page assembled ── */
 const LandingPage = () => (
@@ -43,6 +44,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/layanan/website" element={<WebsitePage />} />
+      <Route path="/layanan/automation-iot" element={<AutomationPage />} />
     </Routes>
   );
 }
