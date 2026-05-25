@@ -15,6 +15,7 @@ const Navbar = () => {
     { href: '#layanan', label: 'Layanan' },
     { href: '#harga', label: 'Harga' },
     { href: '#cara-kerja', label: 'Cara Kerja' },
+    { href: '#portofolio', label: 'Portofolio' },
     { href: '#faq', label: 'FAQ' },
   ];
 
