@@ -58,7 +58,11 @@ const Promises = () => {
     <section
       ref={sectionRef}
       style={{
-        backgroundColor: '#2e3145',
+        background: `
+          radial-gradient(ellipse 80% 60% at 0% 100%, rgba(122,59,46,0.22) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 100% 0%, rgba(61,66,85,0.6) 0%, transparent 55%),
+          linear-gradient(135deg, #1e2235 0%, #2e3145 45%, #2a2d42 100%)
+        `,
         padding: '120px 0 112px',
         position: 'relative',
         overflow: 'hidden',
@@ -87,9 +91,9 @@ const Promises = () => {
       }} />
       {/* ── Terracotta accent glow ── */}
       <div style={{
-        position: 'absolute', bottom: '-80px', left: '-80px',
-        width: '320px', height: '320px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(122,59,46,0.18) 0%, transparent 70%)',
+        position: 'absolute', bottom: '-60px', left: '-60px',
+        width: '400px', height: '400px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(122,59,46,0.25) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
 
