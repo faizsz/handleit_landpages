@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, MessageCircle, Settings, FileText, ArrowRight } from 'lucide-react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
+import FloatingCards from './FloatingCards';
 
 /* ─── Rotating text words ─── */
 const ROTATING_WORDS = [
@@ -8,53 +9,6 @@ const ROTATING_WORDS = [
   'Sistem Digital UMKM',
   'Landing Page Produk',
 ];
-
-/* ─── Organic blob SVG path ─── */
-const BlobMain = () => (
-  <svg
-    viewBox="0 0 420 380"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{
-      position: 'absolute',
-      width: '420px',
-      height: '380px',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-48%, -50%)',
-      zIndex: 0,
-      overflow: 'visible',
-    }}
-  >
-    <path
-      d="M210,30 C270,10 360,50 390,120 C420,195 400,290 330,340 C260,390 140,385 80,330 C20,275 10,175 40,100 C70,25 150,50 210,30Z"
-      fill="#ede9e3"
-      opacity="0.8"
-    />
-  </svg>
-);
-
-const BlobAccent = () => (
-  <svg
-    viewBox="0 0 180 160"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{
-      position: 'absolute',
-      width: '180px',
-      height: '160px',
-      bottom: '-20px',
-      right: '-30px',
-      zIndex: 0,
-      transform: 'rotate(45deg)',
-      overflow: 'visible',
-    }}
-  >
-    <path
-      d="M90,15 C125,5 165,30 170,75 C175,120 145,155 100,158 C55,161 15,135 10,90 C5,45 55,25 90,15Z"
-      fill="#f5efe8"
-      opacity="0.6"
-    />
-  </svg>
-);
 
 /* ─── Dot pattern SVG ─── */
 const DotPattern = () => (
@@ -78,45 +32,6 @@ const DotPattern = () => (
     <rect width="100%" height="100%" fill="url(#dots)" />
   </svg>
 );
-
-/* ─── Service cards config — scattered cluster ─── */
-const SERVICE_CARDS = [
-  {
-    icon: <Globe size={18} strokeWidth={2} color="#7a3b2e" />,
-    title: 'Website & Landing Page',
-    sub: 'Mulai Rp35.000',
-    pos: { top: '20px', left: '10px' },
-    rotate: '-6deg',
-    zIndex: 4,
-  },
-  {
-    icon: <MessageCircle size={18} strokeWidth={2} color="#7a3b2e" />,
-    title: 'Bot WhatsApp',
-    sub: 'Auto-reply 24 jam',
-    pos: { top: '50px', right: '10px' },
-    rotate: '5deg',
-    zIndex: 3,
-    translate: 'translate(20px, 30px)',
-  },
-  {
-    icon: <Settings size={18} strokeWidth={2} color="#7a3b2e" />,
-    title: 'Sistem Otomasi',
-    sub: 'Hemat waktu & tenaga',
-    pos: { bottom: '80px', left: '20px' },
-    rotate: '3deg',
-    zIndex: 2,
-    translate: 'translate(10px, -20px)',
-  },
-  {
-    icon: <FileText size={18} strokeWidth={2} color="#7a3b2e" />,
-    title: 'Template Digital',
-    sub: 'Siap pakai, langsung jadi',
-    pos: { bottom: '50px', right: '20px' },
-    rotate: '-4deg',
-    zIndex: 1,
-    translate: 'translate(30px, 10px)',
-  },
-];
 
 const Hero = () => {
   const [wordIdx, setWordIdx] = useState(0);
@@ -334,83 +249,9 @@ const Hero = () => {
         </div>
 
         {/* ══════════════════════
-            RIGHT COLUMN — scattered card cluster
+            RIGHT COLUMN — premium floating cards
         ══════════════════════ */}
-        <div style={{
-          position: 'relative',
-          height: '440px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          {/* Organic blob — main, behind all cards */}
-          <BlobMain />
-
-          {/* Accent blob — bottom right, partially outside */}
-          <BlobAccent />
-
-          {/* Floating service cards — scattered cluster */}
-          {SERVICE_CARDS.map((card, i) => (
-            <div key={i} style={{
-              position: 'absolute',
-              width: '200px',
-              backgroundColor: '#ffffff',
-              border: '1px solid #e5e2db',
-              borderRadius: '16px',
-              padding: '16px 20px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-              zIndex: card.zIndex,
-              cursor: 'default',
-              transition: 'transform 0.35s ease, box-shadow 0.35s ease',
-              transform: `rotate(${card.rotate})${card.translate ? ' ' + card.translate : ''}`,
-              ...card.pos,
-            }}
-              onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = '0 12px 36px rgba(0,0,0,0.12)';
-                e.currentTarget.style.transform = `rotate(${card.rotate}) translateY(-6px)`;
-                e.currentTarget.style.zIndex = 10;
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
-                e.currentTarget.style.transform = `rotate(${card.rotate})${card.translate ? ' ' + card.translate : ''}`;
-                e.currentTarget.style.zIndex = card.zIndex;
-              }}
-            >
-              {/* Icon circle */}
-              <div style={{
-                width: '36px', height: '36px',
-                backgroundColor: '#f2f0ec',
-                borderRadius: '50%',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '10px',
-              }}>
-                {card.icon}
-              </div>
-
-              {/* Card title */}
-              <div style={{
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: '600',
-                fontSize: '14px',
-                color: '#3d4255',
-                marginBottom: '4px',
-                lineHeight: '1.4',
-              }}>
-                {card.title}
-              </div>
-
-              {/* Card subtitle */}
-              <div style={{
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: '500',
-                fontSize: '13px',
-                color: '#7a3b2e',
-              }}>
-                {card.sub}
-              </div>
-            </div>
-          ))}
-        </div>
+        <FloatingCards />
 
       </div>
 

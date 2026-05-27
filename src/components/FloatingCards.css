@@ -1,0 +1,520 @@
+/* FloatingCards.css */
+
+/* ── Container Styles — Transparent & Seamlessly Integrated ── */
+.floating-cards-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: transparent; /* Blends seamlessly with the Hero section background */
+  border: none; /* Removed the column box borders */
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none; /* Removed column shadow to blend perfectly */
+}
+
+/* ── Asymmetric Card Placements & Tilts ── */
+.service-card-wrapper {
+  position: absolute;
+  width: 210px;
+  height: 200px; /* Compact height to prevent vertical overcrowding */
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), z-index 0s;
+}
+
+/* Card 1: Top-Left */
+.card-top-left {
+  top: 35px;
+  left: 25px;
+  transform: rotate(-5deg);
+  animation: float-1 6s ease-in-out infinite;
+  z-index: 10;
+}
+
+/* Card 2: Top-Right — Moved UP to 35px to eliminate overlaps */
+.card-top-right {
+  top: 35px;
+  right: 25px;
+  transform: rotate(6deg);
+  animation: float-2 6.5s ease-in-out infinite;
+  z-index: 9;
+}
+
+/* Card 3: Bottom-Left */
+.card-bottom-left {
+  bottom: 35px;
+  left: 35px;
+  transform: rotate(4deg);
+  animation: float-3 5.5s ease-in-out infinite;
+  z-index: 8;
+}
+
+/* Card 4: Bottom-Right — Moved DOWN to 35px to eliminate overlaps */
+.card-bottom-right {
+  bottom: 35px;
+  right: 35px;
+  transform: rotate(-5deg);
+  animation: float-4 7s ease-in-out infinite;
+  z-index: 7;
+}
+
+/* ── Card 3D Stack Illusion ── */
+.card-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Bottom Layer */
+.deck-layer-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #A89ED0;
+  border-radius: 18px;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  border: 1px solid rgba(168, 158, 208, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Middle Layer */
+.deck-layer-middle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #C8C2E8;
+  border-radius: 18px;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+  border: 1px solid rgba(200, 194, 232, 0.6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Top Layer - Main Card Face */
+.deck-layer-top {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #faf9f7; /* Matches the exact hero background color for a seamless look */
+  border-radius: 18px;
+  z-index: 3;
+  border: 1.5px solid #E5E2DB;
+  box-shadow: 0 8px 30px rgba(61, 66, 85, 0.06);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+}
+
+/* ── Speech Bubble Pills ── */
+.speech-bubble-pill {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #E5E2DB;
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  color: #3D4255;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Bubble placements */
+.bubble-top-left {
+  top: -38px;
+  left: -15px;
+}
+
+.bubble-top-right {
+  top: -38px;
+  right: -15px;
+}
+
+.bubble-bottom-left {
+  bottom: -38px;
+  left: -15px;
+}
+
+.bubble-bottom-right {
+  bottom: -38px;
+  right: -15px;
+}
+
+/* Speech bubble custom downward/upward tails */
+.bubble-tail {
+  position: absolute;
+  width: 16px;
+  height: 10px;
+  color: #ffffff;
+  fill: currentColor;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.03));
+}
+
+.bubble-tail-down {
+  bottom: -9px;
+  left: 30px;
+  transform: rotate(0deg);
+}
+
+.bubble-tail-down-right {
+  bottom: -9px;
+  right: 30px;
+  transform: rotate(0deg);
+}
+
+.bubble-tail-up {
+  top: -9px;
+  left: 30px;
+  transform: rotate(180deg);
+}
+
+.bubble-tail-up-right {
+  top: -9px;
+  right: 30px;
+  transform: rotate(180deg);
+}
+
+/* ── Sparkles ── */
+.sparkle-star {
+  position: absolute;
+  color: #7A3B2E;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sparkle-1 {
+  top: 15%;
+  left: 48%;
+  animation: blink-sparkle 2.5s infinite ease-in-out;
+}
+
+.sparkle-2 {
+  bottom: 25%;
+  right: 48%;
+  animation: blink-sparkle 3s infinite ease-in-out 0.5s;
+}
+
+.sparkle-3 {
+  top: 45%;
+  left: 8%;
+  animation: blink-sparkle 2s infinite ease-in-out 1s;
+}
+
+.sparkle-4 {
+  top: 50%;
+  right: 8%;
+  animation: blink-sparkle 3.5s infinite ease-in-out 1.5s;
+}
+
+/* ── Card Face Content (Gradient Area & Details) ── */
+.card-gradient-area {
+  height: 125px; /* Compact illustration size */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-title-area {
+  padding: 8px 4px 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: transparent;
+}
+
+.card-title-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 14.5px;
+  color: #111111;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-align: left;
+  line-height: 1.3;
+}
+
+/* ── Interactive Hover Lift & Tilt Effects ── */
+.service-card-wrapper:hover {
+  z-index: 50;
+}
+
+.service-card-wrapper:hover .card-deck {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.service-card-wrapper:hover .deck-layer-top {
+  box-shadow: 0 20px 40px rgba(61, 66, 85, 0.15);
+}
+
+/* Parallax shift of layers on hover */
+.service-card-wrapper:hover .deck-layer-middle {
+  transform: translate(2px, 2px);
+}
+
+.service-card-wrapper:hover .deck-layer-bottom {
+  transform: translate(4px, 4px);
+}
+
+/* ── Mockup Graphics ── */
+
+/* 1. Browser Mockup */
+.browser-mockup {
+  width: 135px;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid rgba(229, 226, 219, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.browser-header {
+  height: 18px;
+  background-color: #f1f0ec;
+  border-bottom: 1px solid rgba(229, 226, 219, 0.8);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 4px;
+}
+
+.browser-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.browser-dot-red { background-color: #ff5f56; }
+.browser-dot-yellow { background-color: #ffbd2e; }
+.browser-dot-green { background-color: #27c93f; }
+
+.browser-address {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  margin-left: 8px;
+  border: 0.5px solid rgba(229, 226, 219, 0.6);
+}
+
+.browser-content {
+  flex-grow: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #faf9f6;
+  position: relative;
+}
+
+.browser-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  fill: #A89ED0;
+  opacity: 0.25;
+}
+
+/* 2. Phone Mockup */
+.phone-mockup {
+  width: 70px;
+  height: 110px;
+  background-color: #111111;
+  border-radius: 14px;
+  padding: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.phone-screen {
+  flex-grow: 1;
+  background-color: #ffffff;
+  border-radius: 11px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 4px;
+  gap: 6px;
+}
+
+.phone-header {
+  height: 6px;
+  background-color: #3D4255;
+  width: 30px;
+  border-radius: 99px;
+  margin: 0 auto 4px auto;
+}
+
+.chat-bubble {
+  padding: 4px 6px;
+  border-radius: 6px;
+  max-width: 80%;
+  font-size: 7px;
+  line-height: 1.2;
+}
+
+.chat-bubble-received {
+  background-color: #e5e7eb;
+  align-self: flex-start;
+  border-bottom-left-radius: 1px;
+  color: #3D4255;
+}
+
+.chat-bubble-sent {
+  background-color: #C8C2E8;
+  color: #3d4255;
+  align-self: flex-end;
+  border-bottom-right-radius: 1px;
+}
+
+/* ── ANIMATION KEYFRAMES ── */
+
+/* Floats (out of sync) */
+@keyframes float-1 {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50%       { transform: rotate(-5deg) translateY(-8px); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: rotate(6deg) translateY(0); }
+  50%       { transform: rotate(6deg) translateY(8px); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: rotate(4deg) translateY(0); }
+  50%       { transform: rotate(4deg) translateY(-7px); }
+}
+
+@keyframes float-4 {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50%       { transform: rotate(-5deg) translateY(7px); }
+}
+
+/* Blinking Sparkles */
+@keyframes blink-sparkle {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+  }
+}
+
+/* ── Mobile/Responsive overrides ── */
+@media (max-width: 900px) {
+  .floating-cards-container {
+    height: 480px;
+    border-radius: 16px;
+    background-size: 20px 20px;
+  }
+  .service-card-wrapper {
+    width: 170px;
+    height: 175px;
+  }
+  .card-gradient-area {
+    height: 100px;
+  }
+  /* Scale mockups to fit */
+  .browser-mockup {
+    width: 105px;
+    height: 75px;
+  }
+  .phone-mockup {
+    width: 60px;
+    height: 90px;
+  }
+  .card-title-text {
+    font-size: 12.5px;
+  }
+  .speech-bubble-pill {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+  .bubble-top-left { top: -32px; left: -10px; }
+  .bubble-top-right { top: -32px; right: -10px; }
+  .bubble-bottom-left { bottom: -32px; left: -10px; }
+  .bubble-bottom-right { bottom: -32px; right: -10px; }
+}
+
+@media (max-width: 600px) {
+  .floating-cards-container {
+    height: auto;
+    padding: 40px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 15px;
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .service-card-wrapper {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    height: 180px;
+    transform: none !important;
+    animation: none !important;
+  }
+  .card-gradient-area {
+    height: 90px;
+  }
+  .browser-mockup {
+    width: 90px;
+    height: 65px;
+  }
+  .phone-mockup {
+    width: 50px;
+    height: 75px;
+  }
+  .chat-bubble {
+    font-size: 6px;
+    padding: 2px 4px;
+  }
+  .deck-layer-middle {
+    top: 4px;
+    left: 4px;
+  }
+  .deck-layer-bottom {
+    top: 8px;
+    left: 8px;
+  }
+  .speech-bubble-pill {
+    display: none; /* Hide Speech bubbles on tiny screens to avoid overcrowding */
+  }
+  .sparkle-star {
+    display: none;
+  }
+}
