@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, ArrowRight } from 'lucide-react';
 import FloatingCards from './FloatingCards';
 
@@ -36,6 +36,7 @@ const DotPattern = () => (
 const Hero = () => {
   const [wordIdx, setWordIdx] = useState(0);
   const [visible, setVisible] = useState(true);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -48,17 +49,40 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('[data-animate]').forEach((el, i) => {
+              setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = el.dataset.animateTo || 'translateY(0)';
+              }, i * 90);
+            });
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section style={{
-      backgroundColor: '#faf9f7',
-      paddingTop: '120px',
-      paddingBottom: '80px',
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
+    <section
+      ref={sectionRef}
+      style={{
+        backgroundColor: '#faf9f7',
+        paddingTop: '120px',
+        paddingBottom: '80px',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
       {/* Dot pattern — far right background */}
       <DotPattern />
 
@@ -81,31 +105,45 @@ const Hero = () => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
           {/* 1. Pill badge */}
-          <div style={{
-            backgroundColor: '#f2f0ec',
-            border: '1px solid #e8e0d8',
-            borderRadius: '99px',
-            padding: '6px 14px',
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: '500',
-            fontSize: '13px',
-            color: '#7a3b2e',
-            marginBottom: '28px',
-            display: 'inline-block',
-          }}>
+          <div
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              backgroundColor: '#f2f0ec',
+              border: '1px solid #e8e0d8',
+              borderRadius: '99px',
+              padding: '6px 14px',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: '500',
+              fontSize: '13px',
+              color: '#7a3b2e',
+              marginBottom: '28px',
+              display: 'inline-block',
+            }}
+          >
             ✦ Digitalisasi UMKM &amp; Bisnis Indonesia
           </div>
 
           {/* 2. Headline */}
-          <h1 style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: '800',
-            fontSize: 'clamp(42px, 5vw, 64px)',
-            color: '#3d4255',
-            lineHeight: '1.25',
-            letterSpacing: '-0.03em',
-            marginBottom: '20px',
-          }}>
+          <h1
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: '800',
+              fontSize: 'clamp(42px, 5vw, 64px)',
+              color: '#3d4255',
+              lineHeight: '1.25',
+              letterSpacing: '-0.03em',
+              marginBottom: '20px',
+            }}
+          >
             Mulai dari Rp35.000<br />
             <span style={{
               background: 'linear-gradient(120deg, rgba(122, 59, 46, 0.15) 0%, rgba(122, 59, 46, 0.18) 100%)',
@@ -118,31 +156,45 @@ const Hero = () => {
           </h1>
 
           {/* 3. Subtext */}
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: '400',
-            fontSize: '18px',
-            color: '#6b7280',
-            lineHeight: '1.7',
-            maxWidth: '480px',
-            marginBottom: '28px',
-          }}>
+          <p
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: '400',
+              fontSize: '18px',
+              color: '#6b7280',
+              lineHeight: '1.7',
+              maxWidth: '480px',
+              marginBottom: '28px',
+            }}
+          >
             Kami bantu bisnis kamu hadir secara digital — website, bot WhatsApp,
             sistem otomasi, dan lebih banyak lagi. Terjangkau, transparan, tanpa ribet.
           </p>
 
           {/* 4. Animated rotating text */}
-          <div style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '20px',
-            color: '#6b7280',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            flexWrap: 'wrap',
-            minHeight: '32px',
-          }}>
+          <div
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '20px',
+              color: '#6b7280',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              flexWrap: 'wrap',
+              minHeight: '32px',
+            }}
+          >
             <span style={{ fontWeight: '400' }}>Kami buatkan</span>
             <span style={{
               fontWeight: '600',
@@ -161,20 +213,27 @@ const Hero = () => {
           </div>
 
           {/* 5. Price pill — small inline badge */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            backgroundColor: '#f2f0ec',
-            border: '1px solid #e0d9d0',
-            borderRadius: '99px',
-            padding: '6px 16px',
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: '500',
-            fontSize: '14px',
-            color: '#3d4255',
-            marginBottom: '28px',
-          }}>
+          <div
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#f2f0ec',
+              border: '1px solid #e0d9d0',
+              borderRadius: '99px',
+              padding: '6px 16px',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: '500',
+              fontSize: '14px',
+              color: '#3d4255',
+              marginBottom: '28px',
+            }}
+          >
             {/* Terracotta dot indicator */}
             <span style={{
               display: 'inline-block',
@@ -188,12 +247,19 @@ const Hero = () => {
           </div>
 
           {/* 6. CTA Buttons — clear hierarchy */}
-          <div style={{
-            display: 'flex',
-            gap: '12px',
-            flexWrap: 'wrap',
-            marginBottom: '16px',
-          }}>
+          <div
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginBottom: '16px',
+            }}
+          >
             {/* Button 1 — Outline (secondary) */}
             <a
               href="#layanan"
@@ -245,12 +311,19 @@ const Hero = () => {
           </div>
 
           {/* 7. Social proof */}
-          <div style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '13px',
-            color: '#9ca3af',
-            marginTop: '4px',
-          }}>
+          <div
+            data-animate
+            data-animate-to="translateY(0)"
+            style={{
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '13px',
+              color: '#9ca3af',
+              marginTop: '4px',
+            }}
+          >
             ⭐⭐⭐⭐⭐&nbsp; Dipercaya UMKM &amp; pelajar di seluruh Indonesia
           </div>
         </div>
@@ -258,7 +331,18 @@ const Hero = () => {
         {/* ══════════════════════
             RIGHT COLUMN — premium floating cards
         ══════════════════════ */}
-        <FloatingCards />
+        <div
+          data-animate
+          data-animate-to="translateY(0)"
+          style={{
+            opacity: 0,
+            transform: 'translateY(32px)',
+            transition: 'opacity 0.8s ease, transform 0.8s ease',
+            width: '100%',
+          }}
+        >
+          <FloatingCards />
+        </div>
 
       </div>
 

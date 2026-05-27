@@ -136,22 +136,21 @@ const Promises = () => {
           {/* ════════════════════════
               LEFT — Editorial headline
           ════════════════════════ */}
-          <div
-            data-animate
-            data-animate-to="translateY(0)"
-            style={{
-              opacity: 0,
-              transform: 'translateY(28px)',
-              transition: 'opacity 0.7s ease, transform 0.7s ease',
-            }}
-          >
+          <div>
             {/* Eyebrow */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              marginBottom: '32px',
-            }}>
+            <div
+              data-animate
+              data-animate-to="translateY(0)"
+              style={{
+                opacity: 0,
+                transform: 'translateY(24px)',
+                transition: 'opacity 0.6s ease, transform 0.6s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginBottom: '32px',
+              }}
+            >
               <div style={{
                 width: '20px', height: '1px',
                 backgroundColor: '#f5c4a0',
@@ -171,15 +170,22 @@ const Promises = () => {
             </div>
 
             {/* Headline */}
-            <h2 style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: '800',
-              fontSize: 'clamp(40px, 4.8vw, 56px)',
-              color: '#ffffff',
-              lineHeight: '1.08',
-              letterSpacing: '-0.03em',
-              margin: 0,
-            }}>
+            <h2
+              data-animate
+              data-animate-to="translateY(0)"
+              style={{
+                opacity: 0,
+                transform: 'translateY(24px)',
+                transition: 'opacity 0.6s ease, transform 0.6s ease',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontWeight: '800',
+                fontSize: 'clamp(40px, 4.8vw, 56px)',
+                color: '#ffffff',
+                lineHeight: '1.08',
+                letterSpacing: '-0.03em',
+                margin: 0,
+              }}
+            >
               Kami kerja<br />
               dulu. Uang<br />
               <span style={{ position: 'relative', display: 'inline-block', paddingBottom: '6px' }}>
@@ -216,30 +222,44 @@ const Promises = () => {
             </h2>
 
             {/* Supporting text */}
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: '400',
-              fontSize: '16px',
-              color: 'rgba(255,255,255,0.55)',
-              lineHeight: '1.75',
-              marginTop: '32px',
-              maxWidth: '300px',
-            }}>
+            <p
+              data-animate
+              data-animate-to="translateY(0)"
+              style={{
+                opacity: 0,
+                transform: 'translateY(24px)',
+                transition: 'opacity 0.6s ease, transform 0.6s ease',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '400',
+                fontSize: '16px',
+                color: 'rgba(255,255,255,0.55)',
+                lineHeight: '1.75',
+                marginTop: '32px',
+                maxWidth: '300px',
+              }}
+            >
               Tidak ada DP. Tidak ada tipu-tipu.<br />
               Lihat hasilnya dulu, baru bayar.
             </p>
 
             {/* Decorative stat pill */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              marginTop: '40px',
-              padding: '12px 20px',
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '99px',
-            }}>
+            <div
+              data-animate
+              data-animate-to="translateY(0)"
+              style={{
+                opacity: 0,
+                transform: 'translateY(24px)',
+                transition: 'opacity 0.6s ease, transform 0.6s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginTop: '40px',
+                padding: '12px 20px',
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '99px',
+              }}
+            >
               <div style={{
                 width: '8px', height: '8px', borderRadius: '50%',
                 backgroundColor: '#4ade80',
