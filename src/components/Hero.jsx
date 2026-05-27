@@ -102,12 +102,19 @@ const Hero = () => {
             fontWeight: '800',
             fontSize: 'clamp(42px, 5vw, 64px)',
             color: '#3d4255',
-            lineHeight: '1.1',
+            lineHeight: '1.25',
             letterSpacing: '-0.03em',
             marginBottom: '20px',
           }}>
-            Digitalisasi Bisnismu,<br />
-            Mulai dari Rp35.000
+            Mulai dari Rp35.000<br />
+            <span style={{
+              background: 'linear-gradient(120deg, rgba(122, 59, 46, 0.15) 0%, rgba(122, 59, 46, 0.18) 100%)',
+              color: '#2c3045', // Slightly darker slate color, not pure black
+              padding: '2px 12px',
+              borderRadius: '8px',
+              display: 'inline-block',
+              marginTop: '6px'
+            }}>Digitalisasi Bisnismu</span>
           </h1>
 
           {/* 3. Subtext */}
