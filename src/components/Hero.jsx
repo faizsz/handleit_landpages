@@ -75,7 +75,7 @@ const Hero = () => {
       style={{
         backgroundColor: '#faf9f7',
         paddingTop: '120px',
-        paddingBottom: '80px',
+        paddingBottom: '280px',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
@@ -344,6 +344,45 @@ const Hero = () => {
           <FloatingCards />
         </div>
 
+      </div>
+
+      {/* ── Gradient fade band (smooth krem → dark transition) ── */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        height: '420px',
+        background: 'linear-gradient(to bottom, rgba(30,34,53,0) 0%, rgba(30,34,53,0.03) 15%, rgba(30,34,53,0.1) 30%, rgba(30,34,53,0.22) 45%, rgba(30,34,53,0.4) 60%, rgba(30,34,53,0.62) 74%, rgba(30,34,53,0.85) 88%, #1e2235 100%)',
+        pointerEvents: 'none',
+        zIndex: 2,
+      }} />
+
+      {/* ── Wave divider at bottom ── */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        overflow: 'hidden',
+        lineHeight: 0,
+        zIndex: 3,
+      }}>
+        <svg
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          style={{
+            position: 'relative',
+            display: 'block',
+            width: '100%',
+            height: '50px',
+          }}
+        >
+          <path
+            d="M0,30 C180,80 360,5 540,40 C720,80 900,15 1080,50 C1200,70 1360,25 1440,40 L1440,100 L0,100 Z"
+            fill="#1e2235"
+          />
+        </svg>
       </div>
 
       {/* Responsive */}

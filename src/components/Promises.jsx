@@ -60,10 +60,9 @@ const Promises = () => {
       style={{
         background: `
           radial-gradient(ellipse 80% 60% at 0% 100%, rgba(122,59,46,0.22) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 50% at 100% 0%, rgba(61,66,85,0.6) 0%, transparent 55%),
-          linear-gradient(135deg, #1e2235 0%, #2e3145 45%, #2a2d42 100%)
+          linear-gradient(180deg, #1e2235 0%, #252839 30%, #2e3145 60%, #2a2d42 100%)
         `,
-        padding: '120px 0 112px',
+        padding: '80px 0 112px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -111,14 +110,7 @@ const Promises = () => {
         ))}
       </div>
 
-      {/* ── Top edge separator ── */}
-      <div style={{
-        position: 'absolute', top: 0, left: '50%',
-        transform: 'translateX(-50%)',
-        width: '80px', height: '3px',
-        background: 'linear-gradient(90deg, transparent, rgba(245,196,160,0.4), transparent)',
-        borderRadius: '99px',
-      }} />
+      {/* ── Top edge separator (hidden — wave handles transition) ── */}
 
       <div style={{
         maxWidth: '1200px', margin: '0 auto',
@@ -305,28 +297,28 @@ const Promises = () => {
                   <div style={{
                     position: 'absolute',
                     top: '50%',
-                    left: '-4px',
+                    left: '-8px',
                     transform: 'translateY(-50%)',
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontWeight: '800',
-                    fontSize: '44px',
+                    fontSize: '64px',
                     lineHeight: '1',
-                    color: 'rgba(255,255,255,0.045)',
+                    color: 'rgba(245,196,160,0.09)',
                     userSelect: 'none',
                     pointerEvents: 'none',
-                    letterSpacing: '-0.02em',
+                    letterSpacing: '-0.03em',
                   }}>
                     {item.num}
                   </div>
 
                   {/* Content */}
-                  <div style={{ paddingLeft: '52px', width: '100%' }}>
+                  <div style={{ paddingLeft: '76px', width: '100%' }}>
                     {/* Icon + title + badge */}
                     <div style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '10px',
-                      marginBottom: '10px',
+                      marginBottom: '12px',
                       flexWrap: 'wrap',
                     }}>
                       {/* Icon pill */}
@@ -376,9 +368,10 @@ const Promises = () => {
                       fontFamily: "'Inter', sans-serif",
                       fontWeight: '400',
                       fontSize: '15px',
-                      color: 'rgba(255,255,255,0.52)',
-                      lineHeight: '1.75',
+                      color: 'rgba(255,255,255,0.58)',
+                      lineHeight: '1.7',
                       margin: 0,
+                      maxWidth: '420px',
                     }}>
                       {item.body}
                     </p>
