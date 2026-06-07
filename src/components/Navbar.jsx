@@ -12,11 +12,32 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: '#layanan', label: 'Layanan' },
-    { href: '#cara-kerja', label: 'Cara Kerja' },
-    { href: '#portofolio', label: 'Portofolio' },
-    { href: '#faq', label: 'FAQ' },
+    { href: 'produk-layanan', label: 'Layanan' },
+    { href: 'cara-kerja', label: 'Cara Kerja' },
+    { href: 'portofolio', label: 'Portofolio' },
+    { href: 'faq', label: 'FAQ' },
   ];
+
+  const NAV_HEIGHT = 64;
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    setIsMobileOpen(false);
+
+    const scrollToTarget = () => {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+      window.scrollTo({ top, behavior: 'smooth' });
+    };
+
+    // If not on the landing page, go home first then scroll
+    if (window.location.pathname !== '/') {
+      window.location.href = `/#${targetId}`;
+    } else {
+      scrollToTarget();
+    }
+  };
 
   return (
     <>
@@ -60,16 +81,19 @@ const Navbar = () => {
             position: 'absolute', left: '50%', transform: 'translateX(-50%)',
           }}>
             {navLinks.map(link => (
-              <a key={link.href} href={link.href} style={{
-                padding: '7px 14px',
-                borderRadius: '8px',
-                fontWeight: '500',
-                fontSize: '0.9375rem',
-                color: '#3d4255',
-                fontFamily: "'Inter', sans-serif",
-                transition: 'background 0.2s, color 0.2s',
-                textDecoration: 'none',
-              }}
+              <a key={link.href} href={`#${link.href}`}
+                onClick={(e) => handleNavClick(e, link.href)}
+                style={{
+                  padding: '7px 14px',
+                  borderRadius: '8px',
+                  fontWeight: '500',
+                  fontSize: '0.9375rem',
+                  color: '#3d4255',
+                  fontFamily: "'Inter', sans-serif",
+                  transition: 'background 0.2s, color 0.2s',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                }}
                 onMouseEnter={e => e.target.style.backgroundColor = '#f2f0ec'}
                 onMouseLeave={e => e.target.style.backgroundColor = 'transparent'}
               >{link.label}</a>
@@ -122,8 +146,8 @@ const Navbar = () => {
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '16px' }}>
             {navLinks.map(link => (
-              <a key={link.href} href={link.href}
-                onClick={() => setIsMobileOpen(false)}
+              <a key={link.href} href={`#${link.href}`}
+                onClick={(e) => handleNavClick(e, link.href)}
                 style={{
                   padding: '11px 14px', borderRadius: '8px', fontWeight: '500',
                   fontSize: '0.95rem', color: '#3d4255', fontFamily: "'Inter', sans-serif",

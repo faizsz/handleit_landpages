@@ -65,7 +65,7 @@ const Footer = () => (
           </h4>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
-              { href: '#layanan', label: 'Layanan' },
+              { href: '#produk-layanan', label: 'Layanan' },
               { href: '#cara-kerja', label: 'Cara Kerja' },
               { href: '#faq', label: 'FAQ' },
               { href: '#kontak', label: 'Kontak' },
@@ -88,7 +88,7 @@ const Footer = () => (
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {['Landing Page', 'Web Operasional', 'Bot WhatsApp', 'Template Digital', 'Maintenance'].map(s => (
               <li key={s}>
-                <a href="#layanan" className="footer-link"
+                <a href="#produk-layanan" className="footer-link"
                   style={{ color: '#8a8fa8', fontSize: '0.88rem', transition: 'color 0.3s' }}>
                   {s}
                 </a>

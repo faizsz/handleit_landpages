@@ -262,7 +262,7 @@ const Hero = () => {
           >
             {/* Button 1 — Outline (secondary) */}
             <a
-              href="#layanan"
+              href="#produk-layanan"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 backgroundColor: 'transparent',

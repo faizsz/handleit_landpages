@@ -38,7 +38,7 @@ const PROJECTS = [
 ];
 
 const Portfolio = () => (
-  <section style={{ backgroundColor: '#f5f4f1', padding: '90px 0' }}>
+  <section id="portofolio" style={{ backgroundColor: '#f5f4f1', padding: '90px 0' }}>
     <div className="container">
       <div className="section-header">
         <span className="section-label">Portofolio</span>

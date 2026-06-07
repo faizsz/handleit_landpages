@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 /* ── Landing page sections ── */
@@ -20,23 +20,41 @@ import AutomationPage from './pages/AutomationPage';
 import TemplatePage from './pages/TemplatePage';
 
 /* ── Full landing page assembled ── */
-const LandingPage = () => (
-  <div className="app">
-    <Navbar />
-    <main>
-      <Hero />
-      <Promises />
-      <ProductShowcase />
-      <WhyAffordable />
-      <div id="cara-kerja"><HowItWorks /></div>
-      <Portfolio />
-      <Testimonials />
-      <FAQ />
-      <div id="kontak"><FinalCTA /></div>
-    </main>
-    <Footer />
-  </div>
-);
+const LandingPage = () => {
+  // Handle hash scroll when arriving from a detail page (e.g. /#portofolio)
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    const NAV_HEIGHT = 64;
+    // Wait for sections to render before scrolling
+    const timer = setTimeout(() => {
+      const el = document.getElementById(hash);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="app">
+      <Navbar />
+      <main>
+        <Hero />
+        <Promises />
+        <ProductShowcase />
+        <WhyAffordable />
+        <div id="cara-kerja"><HowItWorks /></div>
+        <Portfolio />
+        <Testimonials />
+        <FAQ />
+        <div id="kontak"><FinalCTA /></div>
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 function App() {
   return (
