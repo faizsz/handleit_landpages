@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Promises from './components/Promises';
 import ProductShowcase from './components/ProductShowcase';
-import Pricing from './components/Pricing';
 import WhyAffordable from './components/WhyAffordable';
 import HowItWorks from './components/HowItWorks';
 import Portfolio from './components/Portfolio';
@@ -28,7 +27,6 @@ const LandingPage = () => (
       <Hero />
       <Promises />
       <ProductShowcase />
-      <Pricing />
       <WhyAffordable />
       <div id="cara-kerja"><HowItWorks /></div>
       <Portfolio />

@@ -66,7 +66,6 @@ const Footer = () => (
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
               { href: '#layanan', label: 'Layanan' },
-              { href: '#harga', label: 'Harga & Paket' },
               { href: '#cara-kerja', label: 'Cara Kerja' },
               { href: '#faq', label: 'FAQ' },
               { href: '#kontak', label: 'Kontak' },
