@@ -5,6 +5,7 @@ const PROJECTS = [
   {
     id: 'martabak',
     image: '/martabak.png',
+    imagePosition: 'left top',
     label: 'ERP & Kasir',
     labelBg: '#7a3b2e',
     name: 'Martabak Pak Man',
@@ -17,6 +18,7 @@ const PROJECTS = [
   {
     id: 'robotic',
     image: '/robotic.png',
+    imagePosition: 'center',
     label: 'IoT & Robotik',
     labelBg: '#1a3a4a',
     name: 'Line Follower Robot',
@@ -29,6 +31,7 @@ const PROJECTS = [
   {
     id: 'sigma',
     image: '/sigma.png',
+    imagePosition: 'center',
     label: 'Sistem Informasi',
     labelBg: '#1e5a3a',
     name: 'SIGMA',
@@ -78,7 +81,7 @@ const ProjectCard = ({ proj, index }) => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center',
+            objectPosition: proj.imagePosition || 'center',
             transform: hovered ? 'scale(1.04)' : 'scale(1)',
             transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1)',
             display: 'block',
