@@ -4,25 +4,36 @@ import { Star, MapPin, Briefcase } from 'lucide-react';
 const TESTIMONIALS = [
   {
     id: 1,
-    name: 'Sari Dewi',
-    business: 'Warung Kopi Sari',
-    city: 'Yogyakarta',
-    avatar: 'SD',
+    name: 'Pak Man',
+    business: 'Martabak Pak Man',
+    city: 'Lokal',
+    avatar: 'PM',
     avatarColor: '#7a3b2e',
     rating: 5,
-    text: 'Awalnya ragu karena harganya murah, takut hasilnya asal-asalan. Tapi pas jadi, websitenya rapi banget! Pelanggan sekarang bisa lihat menu dan lokasi kami langsung dari HP. Prosesnya cepet, gak ribet sama sekali.',
-    service: 'Landing Page',
+    text: 'Sistem kasir dan stoknya beneran ngebantu banget. Dulu nyatat manual di buku, sekarang tinggal klik. Laporan harian langsung keluar, saya bisa tahu mana produk yang paling laku. Handle IT gercep, gak banyak ngomong langsung dikerjain.',
+    service: 'Sistem ERP & Kasir',
   },
   {
     id: 2,
-    name: 'Budi Santoso',
-    business: 'Laundry Bersih Mas Budi',
-    city: 'Semarang',
-    avatar: 'BS',
-    avatarColor: '#3d4255',
+    name: 'Setya',
+    business: 'Mahasiswa Teknik Informatika',
+    city: 'Kampus',
+    avatar: 'ST',
+    avatarColor: '#1a3a4a',
     rating: 5,
-    text: 'Bot WA-nya keren banget! Sekarang order bisa masuk otomatis ke Google Sheets tanpa saya harus balas satu-satu. Hemat waktu banyak. Handle IT beneran profesional — dikerjain tepat waktu dan hasilnya melebihi ekspektasi.',
-    service: 'Bot WhatsApp',
+    text: 'Sebagai anak IT aku cukup kritis soal kode dan struktur. Tapi ini rapi, bersih, dan scalable. Bot WA yang dibuat juga efisien, logikanya bener. Harganya gila sih murah banget buat kualitas segini. Recommended banget buat yang butuh solusi teknis cepat.',
+    service: 'Bot WhatsApp & Otomasi',
+  },
+  {
+    id: 3,
+    name: 'Roy',
+    business: 'Ketua Organisasi Mahasiswa',
+    city: 'Kampus',
+    avatar: 'RY',
+    avatarColor: '#1e5a3a',
+    rating: 5,
+    text: 'SIGMA beneran solve masalah organisasi kami. Dulu pendaftaran anggota kacau, sekarang semua terdata rapi. Fitur manajemen divisi dan agenda kegiatan juga pas banget. Anggota kami yang awam IT pun gampang makenya. Terima kasih Handle IT!',
+    service: 'Sistem Informasi Organisasi',
   },
 ];
 
@@ -47,9 +58,9 @@ const Testimonials = () => (
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
         gap: '24px',
-        maxWidth: '900px',
+        maxWidth: '1100px',
         margin: '0 auto',
       }}>
         {TESTIMONIALS.map(t => (
